@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { GovernmentBuilding } from '../data/government-buildings'
-import { Flag } from 'lucide-react'
 
 interface MapProps {
   buildings: GovernmentBuilding[]

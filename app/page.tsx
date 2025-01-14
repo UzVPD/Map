@@ -35,7 +35,7 @@ export default function GovernmentBuildingLocator() {
       <main className="flex-grow relative">
         <Map buildings={filteredBuildings} onBuildingSelect={setSelectedBuilding} />
       </main>
-      {/* {selectedBuilding && (
+      {selectedBuilding && (
         <div className="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg max-w-md">
           <h2 className="text-xl font-semibold">{selectedBuilding.name}</h2>
           <p className="text-sm text-gray-600">{selectedBuilding.address}</p>
@@ -49,7 +49,7 @@ export default function GovernmentBuildingLocator() {
             </ul>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   )
 }
