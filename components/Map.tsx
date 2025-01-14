@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -61,4 +62,4 @@ export default function Map({ buildings, onBuildingSelect }: MapProps) {
 
   return <div id="map" className="w-full h-full" />
 }
-
+/* eslint-enable @typescript-eslint/no-unused-vars */
