@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { GovernmentBuilding } from '../data/government-buildings'
@@ -8,9 +8,17 @@ interface MapProps {
   buildings: GovernmentBuilding[]
 }
 
-export default function Map({ buildings }: MapProps) {
+const Map = forwardRef(({ buildings }: MapProps, ref) => {
   const mapRef = useRef<L.Map | null>(null)
   const [mapReady, setMapReady] = useState(false)
+
+  useImperativeHandle(ref, () => ({
+    zoomToBuilding(lat: number, lng: number) {
+      if (mapRef.current) {
+        mapRef.current.setView([lat, lng], 13) // Adjust zoom level as needed
+      }
+    }
+  }))
 
   useEffect(() => {
     if (!mapReady) return
@@ -78,6 +86,8 @@ export default function Map({ buildings }: MapProps) {
   }, [])
 
   return <div id="map" className="w-full h-full" />
-}
+})
+
+export default Map
 /* eslint-enable @typescript-eslint/no-unused-vars */
  
