@@ -49,9 +49,9 @@ export default function Map({ buildings }: MapProps) {
         <div>
           <h2 class="text-xl font-semibold">${building.name}</h2>
           <p class="text-sm text-gray-600">${building.address}</p>
-          <p class="mt-2"><strong>Департамент:</strong> ${building.department}</p>
+          <p class="mt-2"><strong>Department:</strong> ${building.department}</p>
           <div class="mt-2">
-            <strong>Услуги:</strong>
+            <strong>Services:</strong>
             <ul class="list-disc list-inside">
               ${building.services.map(service => `<li class="text-sm">${service}</li>`).join('')}
             </ul>
@@ -59,9 +59,9 @@ export default function Map({ buildings }: MapProps) {
         </div>
       `)
 
-      // Show popup on click
-      marker.on('click', function () {
-        this.openPopup()
+      // Show popup on click using an arrow function
+      marker.on('click', () => {
+        marker.openPopup()
       })
     })
 
