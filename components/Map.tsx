@@ -88,6 +88,8 @@ const Map = forwardRef(({ buildings }: MapProps, ref) => {
   return <div id="map" className="w-full h-full" />
 })
 
+Map.displayName = 'MapComponent'
+
 export default Map
 /* eslint-enable @typescript-eslint/no-unused-vars */
  
