@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 're
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { GovernmentBuilding } from '../data/government-buildings'
-
+import './Map.css'
 interface MapProps {
   buildings: GovernmentBuilding[]
 }
@@ -50,19 +50,21 @@ const Map = forwardRef(({ buildings }: MapProps, ref) => {
     // Add new markers with custom icon
     buildings.forEach(building => {
       const marker = L.marker([building.lat, building.lng], { icon: customIcon }).addTo(map)
-      marker.bindTooltip(building.name)
-
-      // Bind a popup to the marker
+      
+      // Bind a popup to the marker with detailed content
       marker.bindPopup(`
-        <div>
+        <div class="popup-card">
           <h2 class="text-xl font-semibold">${building.name}</h2>
+          <div class="images">
+            ${building.images ? building.images.map(image => `<img src="${image}" alt="${building.name}" class="popup-image" />`).join('') : ''}
+          </div>
           <p class="text-sm text-gray-600">${building.address}</p>
-          <p class="mt-2"><strong>Department:</strong> ${building.department}</p>
-          <div class="mt-2">
-            <strong>Services:</strong>
-            <ul class="list-disc list-inside">
-              ${building.services.map(service => `<li class="text-sm">${service}</li>`).join('')}
-            </ul>
+          <p class="mt-2"><strong>Часы работы:</strong> ${building.hours}</p>
+          <div class="link-rating">
+            <a href="${building.website || '#'}" target="_blank" class="text-blue-500">${building.website || 'Сайт недоступен'}</a>
+            <div class="rating">
+              ${building.rating ? '<span class="star">★</span>'.repeat(building.rating) : 'Рейтинг недоступен'}
+            </div>
           </div>
         </div>
       `)

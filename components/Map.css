@@ -1,0 +1,27 @@
+.images {
+  display: flex; /* Используем Flexbox для горизонтального расположения */
+  gap: 5px; /* Отступ между изображениями */
+}
+
+.popup-image {
+    width: 100px; /* Установите нужную ширину */
+    height: 80px; /* Установите нужную высоту */
+    object-fit: cover; /* Сохраняет пропорции изображения */
+    border-radius: 8px; /* Закругленные края */
+}
+
+.link-rating {
+  display: flex; /* Используем Flexbox для горизонтального расположения */
+  justify-content: space-between; /* Размещаем элементы по краям */
+  align-items: center; /* Выравниваем элементы по центру */
+  margin-top: 8px; /* Отступ сверху */
+}
+
+.rating {
+  display: flex; /* Для правильного отображения звезд */
+}
+
+.star {
+  color: gold; /* Цвет звезд */
+  margin-left: 2px; /* Отступ между звездами */
+}
